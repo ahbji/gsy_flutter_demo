@@ -16,7 +16,7 @@ class _RefreshDemoPageState2 extends State<RefreshDemoPage2> {
 
   List<String> dataList = [];
 
-  final ScrollController _scrollController = new ScrollController();
+  final ScrollController _scrollController = ScrollController();
 
   Future<void> onRefresh() async {
     await Future.delayed(Duration(seconds: 2));
@@ -24,7 +24,7 @@ class _RefreshDemoPageState2 extends State<RefreshDemoPage2> {
     for (int i = 0; i < pageSize; i++) {
       dataList.add("refresh");
     }
-    if(disposed) {
+    if (disposed) {
       return;
     }
     setState(() {});
@@ -35,7 +35,7 @@ class _RefreshDemoPageState2 extends State<RefreshDemoPage2> {
     for (int i = 0; i < pageSize; i++) {
       dataList.add("loadmore");
     }
-    if(disposed) {
+    if (disposed) {
       return;
     }
     setState(() {});
@@ -46,7 +46,7 @@ class _RefreshDemoPageState2 extends State<RefreshDemoPage2> {
     super.didChangeDependencies();
 
     ///直接触发下拉
-    new Future.delayed(const Duration(milliseconds: 500), () {
+    Future.delayed(const Duration(milliseconds: 500), () {
       _scrollController.animateTo(-141,
           duration: Duration(milliseconds: 600), curve: Curves.linear);
       return true;
@@ -63,10 +63,10 @@ class _RefreshDemoPageState2 extends State<RefreshDemoPage2> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: new Text("RefreshDemoPage"),
+        title: Text("RefreshDemoPage"),
       ),
       body: Container(
-        child: new NotificationListener(
+        child: NotificationListener(
           onNotification: (ScrollNotification notification) {
             ///判断当前滑动位置是不是到达底部，触发加载更多回调
             if (notification is ScrollEndNotification) {
@@ -99,7 +99,7 @@ class _RefreshDemoPageState2 extends State<RefreshDemoPage2> {
                   delegate: SliverChildBuilderDelegate(
                     (BuildContext context, int index) {
                       if (index == dataList.length) {
-                        return new Container(
+                        return Container(
                           margin: EdgeInsets.all(10),
                           child: Align(
                             child: CircularProgressIndicator(),
@@ -107,10 +107,10 @@ class _RefreshDemoPageState2 extends State<RefreshDemoPage2> {
                         );
                       }
                       return Card(
-                        child: new Container(
+                        child: Container(
                           height: 60,
                           alignment: Alignment.centerLeft,
-                          child: new Text("Item ${dataList[index]} $index"),
+                          child: Text("Item ${dataList[index]} $index"),
                         ),
                       );
                     },

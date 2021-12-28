@@ -10,9 +10,11 @@ import 'package:gsy_flutter_demo/widget/canvas_click_demo_page.dart';
 import 'package:gsy_flutter_demo/widget/chat_list_scroll_demo_page.dart';
 import 'package:gsy_flutter_demo/widget/color_progress_demo_page.dart';
 import 'package:gsy_flutter_demo/widget/drag_img_demo_page.dart';
+import 'package:gsy_flutter_demo/widget/first_flutter_page.dart';
 import 'package:gsy_flutter_demo/widget/index_stack_drag_card_demo_page.dart';
 import 'package:gsy_flutter_demo/widget/index_stack_drag_card_demo_page2.dart';
 import 'package:gsy_flutter_demo/widget/link_sliver/link_sliver_demo_page.dart';
+import 'package:gsy_flutter_demo/widget/pull_load_demo_page.dart';
 import 'package:gsy_flutter_demo/widget/rich_text_demo_page2.dart';
 import 'package:gsy_flutter_demo/widget/scroll_inner_content_demo_page.dart';
 import 'package:gsy_flutter_demo/widget/align_demo_page.dart';
@@ -55,10 +57,16 @@ import 'package:gsy_flutter_demo/widget/sliver_stick_demo_page.dart';
 import 'package:gsy_flutter_demo/widget/sliver_tab_demo_page.dart';
 import 'package:gsy_flutter_demo/widget/sliver_tab_demo_page2.dart';
 import 'package:gsy_flutter_demo/widget/sliver_tab/sliver_tab_demo_page3.dart';
+import 'package:gsy_flutter_demo/widget/stateful_widget.dart';
+import 'package:gsy_flutter_demo/widget/stateless_widget.dart';
 import 'package:gsy_flutter_demo/widget/statusbar_demo_page.dart';
 import 'package:gsy_flutter_demo/widget/stick/stick_demo_page.dart';
 import 'package:gsy_flutter_demo/widget/stick/stick_demo_page2.dart';
 import 'package:gsy_flutter_demo/widget/stick_sliver_list_demo_page.dart';
+import 'package:gsy_flutter_demo/widget/tab_bar_bottom_page.dart';
+import 'package:gsy_flutter_demo/widget/tab_bar_top_page.dart';
+import 'package:gsy_flutter_demo/widget/tab_widget_bottom_page.dart';
+import 'package:gsy_flutter_demo/widget/tab_widget_top_page.dart';
 import 'package:gsy_flutter_demo/widget/tag_demo_page.dart';
 import 'package:gsy_flutter_demo/widget/matrix_custom_painter_page.dart';
 import 'package:gsy_flutter_demo/widget/text_line_height_demo_page.dart';
@@ -149,6 +157,27 @@ class _MyHomePageState extends State<MyHomePage> {
 }
 
 Map<String, WidgetBuilder> routers = {
+  "第一个 Flutter Page": (context) {
+    return FirstFlutterPage();
+  },
+  "StatelessWidget": (context) {
+    return StlWidget();
+  },
+  "StatefulWidget": (context) {
+    return StfWidget();
+  },
+  "顶部 TabBar": (context) {
+    return TabbarTopPage();
+  },
+  "底部 TabBar": (context) {
+    return TabbarBottomPage();
+  },
+  "在顶部 TabBar 使用 Tab Widget": (context) {
+    return TabWidgetTopPage();
+  },
+  "在底部 TabBar 使用 Tab Widget": (context) {
+    return TabWidgetBottomPage();
+  },
   "文本输入框简单的 Controller": (context) {
     return new ControllerDemoPage();
   },
@@ -178,6 +207,9 @@ Map<String, WidgetBuilder> routers = {
   },
   "简单上下刷新3": (context) {
     return new RefreshDemoPage3();
+  },
+  "上下拉刷新": (context) {
+    return new PullLoadDemoPage();
   },
   "通过绝对定位布局": (context) {
     return new PositionedDemoPage();
@@ -359,7 +391,6 @@ Map<String, WidgetBuilder> routers = {
   "首尾添加数据不会抖动": (context) {
     return new ChatListScrollDemoPage();
   },
-
 };
 
 enum Cat { black, white }

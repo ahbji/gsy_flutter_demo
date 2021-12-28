@@ -15,9 +15,9 @@ class _RefreshDemoPageState extends State<RefreshDemoPage> {
 
   List<String> dataList = [];
 
-  final ScrollController _scrollController = new ScrollController();
+  final ScrollController _scrollController = ScrollController();
 
-  final GlobalKey<RefreshIndicatorState> refreshKey = new GlobalKey();
+  final GlobalKey<RefreshIndicatorState> refreshKey = GlobalKey();
 
   Future<void> onRefresh() async {
     await Future.delayed(Duration(seconds: 2));
@@ -67,23 +67,23 @@ class _RefreshDemoPageState extends State<RefreshDemoPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: new Text("RefreshDemoPage"),
+        title: Text("RefreshDemoPage"),
       ),
       body: Container(
-        child: new RefreshIndicator(
+        child: RefreshIndicator(
           ///GlobalKey，用户外部获取RefreshIndicator的State，做显示刷新
           key: refreshKey,
 
           ///下拉刷新触发，返回的是一个Future
           onRefresh: onRefresh,
-          child: new ListView.builder(
+          child: ListView.builder(
             ///保持ListView任何情况都能滚动，解决在RefreshIndicator的兼容问题。
             physics: const AlwaysScrollableScrollPhysics(),
 
             ///根据状态返回
             itemBuilder: (context, index) {
               if (index == dataList.length) {
-                return new Container(
+                return Container(
                   margin: EdgeInsets.all(10),
                   child: Align(
                     child: CircularProgressIndicator(),
@@ -91,10 +91,10 @@ class _RefreshDemoPageState extends State<RefreshDemoPage> {
                 );
               }
               return Card(
-                child: new Container(
+                child: Container(
                   height: 60,
                   alignment: Alignment.centerLeft,
-                  child: new Text("Item ${dataList[index]} $index"),
+                  child: Text("Item ${dataList[index]} $index"),
                 ),
               );
             },
